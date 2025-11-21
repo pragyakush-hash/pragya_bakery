@@ -125,12 +125,12 @@ const login = async (req, res) => {
     }
 
     // Generate access token (short-lived, 15 minutes)
-    const accessToken = jwt.sign({ userId: user._id, role: user.role }, "p123", {
+    const accessToken = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, {
       expiresIn: "15m",
     });
 
     // Generate refresh token (long-lived, 7 days)
-    const refreshToken = jwt.sign({ userId: user._id, role: user.role }, "p123", {
+    const refreshToken = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
@@ -170,7 +170,7 @@ const refreshToken = async (req, res) => {
     }
 
     try {
-      const decoded = jwt.verify(token, "p123");
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
       const user = await User.findById(decoded.userId);
       
       if (!user) {
@@ -178,7 +178,7 @@ const refreshToken = async (req, res) => {
       }
 
       // Generate new access token
-      const accessToken = jwt.sign({ userId: user._id, role: user.role }, "p123", {
+      const accessToken = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, {
         expiresIn: "15m",
       });
 
