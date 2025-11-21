@@ -7,13 +7,12 @@ import { store } from "./app/store.js";
 import { setTokenGetter, setStoreRef } from "./utils/axiosConfig.js";
 import { ToastContainer } from "react-toastify";
 
-// Set up token getter for axios interceptor
 setTokenGetter(() => {
   const state = store.getState();
   return state.auth.userToken;
 });
 
-// Set store reference for axios interceptor (to avoid circular dependency)
+
 setStoreRef(store);
 
 createRoot(document.getElementById("root")).render(

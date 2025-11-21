@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://pragyabakery-production.up.railway.app";
 
 let storeRef = null;
 

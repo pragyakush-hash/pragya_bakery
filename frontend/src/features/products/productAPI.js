@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080";
+const API_URL = "https://pragyabakery-production.up.railway.app";
 
 export const ProductDataFetch = async () => {
   try {
