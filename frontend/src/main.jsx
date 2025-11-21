@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import { setTokenGetter, setStoreRef } from "./utils/axiosConfig.js";
+import { ToastContainer } from "react-toastify";
 
 // Set up token getter for axios interceptor
 setTokenGetter(() => {
@@ -18,6 +19,7 @@ setStoreRef(store);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
+      <ToastContainer position="top-right" theme="colored" />
       <App />
     </Provider>
   </StrictMode>

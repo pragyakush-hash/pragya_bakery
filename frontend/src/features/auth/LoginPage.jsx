@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "./authSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 const LoginPage = () => {
   const [loginData, setLoginData] = useState({});
@@ -12,11 +13,11 @@ const LoginPage = () => {
   useEffect(() => {
     console.log("isAuthenticated in login", isAuthenticated);
     if (isAuthenticated === true && user) {
-      // Navigate based on user role
+      toast.success("Login Successfully...");
       if (user.role === "seller") {
         navigate("/seller-dashboard");
       } else if (user.role === "admin") {
-        navigate("/admin-dashboard"); // You can create this later
+        navigate("/admin-dashboard"); 
       } else {
         navigate("/");
       }

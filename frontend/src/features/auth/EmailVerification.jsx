@@ -9,8 +9,8 @@ const EmailVerification = () => {
   const { isLoading, error } = useSelector((state) => state.auth);
   const [emailInput, setEmailInput] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     dispatch(emailVerification(emailInput));
   };
 

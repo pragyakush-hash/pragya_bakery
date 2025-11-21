@@ -12,12 +12,13 @@ import Footer from "./components/Footer";
 import Favorites from "./pages/Favorites";
 import CartPage from "./features/cart/CartPage";
 import ProductDetail from "./features/products/ProductDetail";
-import OrderSuccess from "./features/orders/orderSuccess";
-import OrderHistory from "./features/orders/OrderHistory";
+import OrderSuccess from "./features/orders/OrderSuccess";
+// import OrderHistory from "./features/orders/OrderHistory";
 import SellerDashboard from "./pages/SellerDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import AuthInitializer from "./components/AuthInitializer";
+import OrderHistory from "./features/orders/OrderHistory";
 
 const AppContent = () => {
   const location = useLocation();

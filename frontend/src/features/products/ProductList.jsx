@@ -194,7 +194,6 @@
 
 // export default ProductList;
 
-
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "./productSlice";
@@ -204,14 +203,17 @@ import ProductSlider from "./ProductSlider";
 import CategorySlider from "./CategorySlider";
 import ProductCard from "./ProductCard";
 
-
-
 const ProductList = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.product);
+  const { products, isLoading } = useSelector((state) => state.product);
 
   useEffect(() => {
-    dispatch(getProducts());
+    if (!isLoading) {
+      console.log(
+        isLoading,"isloading"
+      )
+      dispatch(getProducts());
+    }
   }, [dispatch]);
 
   const handleAddToCart = ({ productId, quantity }) => {
@@ -233,7 +235,6 @@ const ProductList = () => {
 
   return (
     <div className="mt-6">
-
       <h2 className="text-3xl font-bold text-amber-700 mb-4 text-center">
         Featured Categories
       </h2>
@@ -281,4 +282,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-

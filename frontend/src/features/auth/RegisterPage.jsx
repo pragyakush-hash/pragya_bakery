@@ -6,9 +6,10 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "./authSlice";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -17,8 +18,11 @@ const RegisterPage = () => {
   const inputRefs = useRef([]);
 
   useEffect(() => {
-    if (user) navigate("/");
-  }, [user, navigate]);
+    if (isAuthenticated){
+      toast.success("Registration successfully..")
+       navigate("/")
+    };
+  }, [isAuthenticated]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
